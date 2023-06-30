@@ -2,9 +2,9 @@
   <div class="container">
     <form action="" method="get" class="form">
       <h1 class="form__title">Please sign in</h1>
-      <Input :placeholder="'login'"/>
-      <Input :placeholder="'password'"/>
-      <SubmitButton/>
+      <Input :type="'text'" :placeholder="'login'" :class="'input-login'"/>
+      <Input :type="'password'" :placeholder="'password'" :class="'input-login'"/>
+      <Input :type="'submit'" :value="'Sign in'" :class="'input-button'"/>
     </form>
   </div>
 </template>
