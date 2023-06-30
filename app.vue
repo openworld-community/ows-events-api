@@ -1,17 +1,17 @@
-<template>
-  <NuxtPage />
-</template>
+<script setup lang="ts">
+import '@/assets/base.pcss';
+import '@/assets/colors.pcss';
 
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html {
-  font-family: roboto;
-  font-size: 16px;
-  font-weight: 100;
-}
-</style>
+useHead({
+	link: [
+		{
+			rel: 'stylesheet',
+			href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap',
+			fetchpriority: 'high'
+		}
+	]
+});
+</script>
+<template>
+	<NuxtPage />
+</template>
