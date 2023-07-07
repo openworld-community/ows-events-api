@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { Route } from '@/types/router';
-
-const routes = Object.keys(Route);
+import { ROUTE } from '@/types/router';
 </script>
 <template>
     <div class="root">
@@ -9,7 +7,7 @@ const routes = Object.keys(Route);
         <nav>
             <ol>
                 <li
-                    v-for="route in routes"
+                    v-for="route in ROUTE"
                     :key="route"
                 >
                     <NuxtLink

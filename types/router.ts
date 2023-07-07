@@ -1,4 +1,4 @@
-export enum Route {
-  PROFILE = "PROFILE",
-  LOGIN = "LOGIN",
+export enum ROUTE {
+	PROFILE = 'PROFILE',
+	LOGIN = 'LOGIN'
 }
