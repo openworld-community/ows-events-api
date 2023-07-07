@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import '@/assets/base.pcss';
 import '@/assets/colors.pcss';
 
 useHead({
