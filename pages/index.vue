@@ -5,7 +5,7 @@ const routes = Object.keys(Route);
 </script>
 <template>
 	<div class="flex min-h-screen flex-col items-center justify-center text-center text-2xl">
-		<h1 class="mb-2 bg-violet-600 text-3xl font-extrabold">HOMEPAGE</h1>
+		<h1 class="mb-2 text-3xl font-extrabold">HOMEPAGE</h1>
 		<nav>
 			<ol>
 				<li v-for="route in routes">
