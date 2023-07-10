@@ -10,7 +10,7 @@ Start the development server on `http://localhost:3000`:
 npm run dev
 ```
 
-### Code quality
+### Code Quality
 
 ```bash
 # Log type errors to console
