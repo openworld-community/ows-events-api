@@ -2,12 +2,12 @@
 export default defineNuxtConfig({
     modules: ['@nuxtjs/eslint-module'],
     css: ['~/assets/base.pcss'],
-	postcss: {
-		plugins: {
-			'tailwindcss/nesting': {},
-			tailwindcss: {},
-			autoprefixer: {}
-		}
-	},
-	devtools: { enabled: false }
+    postcss: {
+        plugins: {
+            'tailwindcss/nesting': {},
+            tailwindcss: {},
+            autoprefixer: {}
+        }
+    },
+    devtools: { enabled: false }
 });

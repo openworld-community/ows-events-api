@@ -13,17 +13,17 @@ definePageMeta({ name: ROUTE.LOGIN });
             <Input
                 :type="'text'"
                 :placeholder="'login'"
-                :class="'input-login'"
+                :class-name="'input-login'"
             />
             <Input
                 :type="'password'"
                 :placeholder="'password'"
-                :class="'input-login'"
+                :class-name="'input-login'"
             />
             <Input
                 :type="'submit'"
                 :value="'Sign in'"
-                :class="'input-button'"
+                :class-name="'input-button'"
             />
         </form>
     </div>

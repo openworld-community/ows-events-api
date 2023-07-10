@@ -10,8 +10,9 @@ definePageMeta({ name: ROUTE.PROFILE });
                 <a
                     class="username"
                     href="#"
-                    >Username</a
                 >
+                    Username
+                </a>
                 <a
                     class="logout-btn"
                     href="#"
