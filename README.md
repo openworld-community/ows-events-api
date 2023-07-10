@@ -17,7 +17,7 @@ npm run dev
 npm run typecheck
 # Log ESLint errors and warning to console
 npm run lint
-# Run prettier formatting on all app. Logs files which were formatted
+# Run prettier formatting on the whole app. Logs files which were formatted
 npm run format
 ```
 
