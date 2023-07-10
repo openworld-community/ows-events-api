@@ -3,7 +3,7 @@ import { Route } from '@/types/router';
 definePageMeta({ name: Route.LOGIN });
 </script>
 <template>
-	<div class="container bg-navyDark">
+	<div class="container bg-accent-navy-dark">
 		<form
 			action=""
 			method="get"

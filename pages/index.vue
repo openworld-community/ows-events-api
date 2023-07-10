@@ -4,7 +4,9 @@ import { Route } from '@/types/router';
 const routes = Object.keys(Route);
 </script>
 <template>
-	<div class="flex min-h-screen flex-col items-center justify-center text-center text-2xl bg-navyDark">
+	<div
+		class="flex min-h-screen flex-col items-center justify-center bg-accent-navy-dark text-center text-2xl"
+	>
 		<h1 class="mb-2 text-3xl font-extrabold">HOMEPAGE</h1>
 		<nav>
 			<ol>

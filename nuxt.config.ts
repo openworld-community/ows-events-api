@@ -3,8 +3,9 @@ export default defineNuxtConfig({
 	css: ['~/assets/base.pcss'],
 	postcss: {
 		plugins: {
-		tailwindcss: {},
-		autoprefixer: {},
-		},
-	},
-})
+			'tailwindcss/nesting': {},
+			tailwindcss: {},
+			autoprefixer: {}
+		}
+	}
+});
