@@ -4,8 +4,8 @@ import { Route } from '@/types/router';
 const routes = Object.keys(Route);
 </script>
 <template>
-	<div class="flex flex-col items-center justify-center min-h-screen text-center text-2xl">
-		<h1 class="font-extrabold text-3xl mb-2">HOMEPAGE</h1>
+	<div class="flex min-h-screen flex-col items-center justify-center text-center text-2xl">
+		<h1 class="mb-2 text-3xl font-extrabold">HOMEPAGE</h1>
 		<nav>
 			<ol>
 				<li v-for="route in routes">
