@@ -15,8 +15,9 @@ import { ROUTE } from '@/types/router';
                     <NuxtLink
                         :to="{ name: route }"
                         class="route-link"
-                        >{{ route }}</NuxtLink
                     >
+                        {{ route }}
+                    </NuxtLink>
                 </li>
             </ol>
         </nav>
