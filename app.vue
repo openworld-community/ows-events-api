@@ -10,7 +10,7 @@ useHead({
 });
 </script>
 <template>
-	<Header />
-	<NuxtPage />
-	<Footer />
+    <Header />
+    <NuxtPage />
+    <Footer />
 </template>

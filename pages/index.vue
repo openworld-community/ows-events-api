@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import { ROUTE } from '@/types/router';
+// import { ROUTE } from '@/types/router';
+// warning  'routes' is assigned a value but never used 
 </script>
 <template>
     <div
         class="flex min-h-screen flex-col items-center justify-center bg-accent-navy-dark text-center text-2xl"
     >
         <h1 class="mb-2 text-3xl font-extrabold">HOMEPAGE</h1>
-        <nav>
+        <!-- <nav>
             <ol>
                 <li
-                    v-for="route in ROUTE"
+                    v-for="route in $route"
                     :key="route"
                 >
                     <NuxtLink
@@ -20,7 +21,7 @@ import { ROUTE } from '@/types/router';
                     </NuxtLink>
                 </li>
             </ol>
-        </nav>
+        </nav> -->
     </div>
 </template>
 <style scoped lang="postcss">
