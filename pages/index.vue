@@ -4,8 +4,10 @@ import { Route } from '@/types/router';
 const routes = Object.keys(Route);
 </script>
 <template>
-	<div class="root">
-		<h1>HOMEPAGE</h1>
+	<div
+		class="flex min-h-screen flex-col items-center justify-center bg-accent-navy-dark text-center text-2xl"
+	>
+		<h1 class="mb-2 text-3xl font-extrabold">HOMEPAGE</h1>
 		<nav>
 			<ol>
 				<li v-for="route in routes">
@@ -20,20 +22,6 @@ const routes = Object.keys(Route);
 	</div>
 </template>
 <style scoped lang="postcss">
-.root {
-	min-height: 100dvh;
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: 1.5rem;
-}
-h1 {
-	font-size: 1.7rem;
-	font-weight: 800;
-	margin-bottom: 0.5rem;
-}
 .route-link {
 	transition: text-shadow 200ms;
 	&:hover,
