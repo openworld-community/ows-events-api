@@ -11,6 +11,7 @@
         <div class="nav-link">Пункт меню</div>
         /
         <div class="nav-link">Пункт меню</div>
+        <NuxtLink to="/profile">Войти/профайл</NuxtLink> <!--сделать что бы менялось -->
         <NuxtLink
             to="/login"
             class="login-button"

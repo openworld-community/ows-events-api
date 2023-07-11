@@ -1,7 +1,6 @@
 <script setup lang="ts">
-// import { ROUTE } from '@/types/router';
-// definePageMeta({ name: ROUTE.LOGIN });
-// warning  'routes' is assigned a value but never used 
+import { ROUTE } from '@/types/router';
+definePageMeta({ name: ROUTE.LOGIN });
 </script>
 <template>
     <div class="container bg-accent-navy-dark">

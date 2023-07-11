@@ -1,22 +1,22 @@
 <template>
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-info">
-                <p>OWS-EVENTS</p>
-                <p>Адрес: Ул Для Примера</p>
-                <p>Телефон: +7 123 456 7890</p>
-                <p>Email: info@owsevents.com</p>
-            </div>
+    <footer class="footer bg-custom-blue py-4 text-white">
+        <div class="container mx-auto text-center">
+            <p>OWS-EVENTS</p>
+            <p>Адрес: Ул Для Примера</p>
+            <p>Телефон: +7 123 456 7890</p>
+            <p>Email: info@owsevents.com</p>
         </div>
     </footer>
 </template>
 
-<style scoped>
+<style>
 .footer {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background-color: #374259;
-    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-custom-blue {
+    background-color: #374259;
 }
 </style>
