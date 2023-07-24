@@ -11,24 +11,27 @@
         "postinstall": "nuxt prepare"
     },
     "dependencies": {
+        "@quasar/extras": "^1.16.5",
         "autoprefixer": "^10.4.14",
         "nuxt": "^3.6.1",
         "postcss": "^8.4.25",
+        "quasar": "^2.12.3",
         "tailwindcss": "^3.3.2"
     },
     "devDependencies": {
         "@nuxt/devtools": "latest",
+        "@nuxt/eslint-config": "^0.1.1",
+        "@nuxtjs/eslint-module": "^4.1.0",
         "@types/node": "^18",
-        "prettier": "^2.8.8",
-        "prettier-plugin-tailwindcss": "^0.3.0",
-        "typescript": "^5.1.6",
-        "vue-tsc": "^1.8.3",
         "@typescript-eslint/eslint-plugin": "^5.61.0",
         "@typescript-eslint/parser": "^5.61.0",
         "eslint": "^8.44.0",
         "eslint-plugin-nuxt": "^4.0.0",
         "eslint-plugin-vue": "^9.15.1",
-        "@nuxt/eslint-config": "^0.1.1",
-        "@nuxtjs/eslint-module": "^4.1.0"
+        "nuxt-quasar-ui": "^2.0.4",
+        "prettier": "^2.8.8",
+        "prettier-plugin-tailwindcss": "^0.3.0",
+        "typescript": "^5.1.6",
+        "vue-tsc": "^1.8.3"
     }
 }
