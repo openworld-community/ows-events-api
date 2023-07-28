@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ROUTE } from '@/types/router';
 const a: string              = 5;
+const b: string              = 5;
+const c: string              = 5;
+const d: string              = 5;
 </script>
 <template>
     <div
