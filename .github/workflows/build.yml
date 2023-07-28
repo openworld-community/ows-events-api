@@ -11,4 +11,3 @@ jobs:
                   cache: ''
                   cache-dependency-path: ''
             - run: npm ci
-            - run: npm run build
