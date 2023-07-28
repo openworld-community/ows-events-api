@@ -16,6 +16,12 @@ jobs:
               name: setup node_modules
             - run: npm run typecheck
               name: typecheck
+              if: always()
+            - run: npm run lint
+              name: lint
+              if: always()
+            - run: npm run check-format
+              name: format
+              if: always()
             - run: npm run build
               name: build
-              if: always()
