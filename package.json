@@ -7,14 +7,18 @@
         "preview": "nuxt preview",
         "typecheck": "nuxt typecheck",
         "lint": "eslint .",
-        "format": "prettier . -w -l"
+        "format": "prettier . -w -l",
+        "postinstall": "nuxt prepare"
     },
     "dependencies": {
         "@quasar/extras": "^1.16.5",
         "autoprefixer": "^10.4.14",
+        "bootstrap-vue": "^2.23.1",
         "nuxt": "^3.6.1",
+        "phaser": "^3.60.0",
         "postcss": "^8.4.25",
         "quasar": "^2.12.3",
+        "react-icons": "^4.10.1",
         "tailwindcss": "^3.3.2"
     },
     "devDependencies": {
