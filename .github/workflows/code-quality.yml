@@ -16,6 +16,6 @@ jobs:
               name: setup node_modules
             - run: npm run typecheck
               name: typecheck
-              continue-on-error: true
             - run: npm run build
               name: build
+              if: always()
