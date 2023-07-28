@@ -3,6 +3,8 @@ on:
     pull_request:
         branches: 'main'
         types: [opened, synchronize, reopened, ready_for_review]
+    push:
+        branches: 'main'
 jobs:
     code-quality:
         if: !github.event.pull_request.draft
