@@ -7,8 +7,7 @@
         "preview": "nuxt preview",
         "typecheck": "nuxt typecheck",
         "lint": "eslint .",
-        "format": "prettier . -w -l",
-        "postinstall": "nuxt prepare"
+        "format": "prettier . -w -l"
     },
     "dependencies": {
         "@quasar/extras": "^1.16.5",
