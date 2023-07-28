@@ -1,0 +1,31 @@
+name: code-quality
+on:
+    pull_request:
+        branches: 'main'
+        types: [opened, synchronize, reopened, ready_for_review]
+jobs:
+    code-quality:
+        if: github.event.pull_request.draft==false
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+              name: workspace setup
+            - uses: actions/setup-node@v3
+              name: setup node
+              with:
+                  node-version: '>=16.10.0'
+                  cache: 'npm'
+                  cache-dependency-path: 'package-lock.json'
+            - run: npm ci
+              name: setup node_modules
+            - run: npm run typecheck
+              name: typecheck
+              if: always()
+            - run: npm run lint
+              name: lint
+              if: always()
+            - run: npm run check-format
+              name: format
+              if: always()
+            - run: npm run build
+              name: build

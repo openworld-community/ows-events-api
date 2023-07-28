@@ -6,8 +6,9 @@
         "build": "nuxt build",
         "preview": "nuxt preview",
         "typecheck": "nuxt typecheck",
-        "lint": "eslint .",
-        "format": "prettier . -w -l",
+        "lint": "eslint . --max-warnings=0",
+        "check-format": "prettier . -c",
+        "format": "npm run check-format -- -w",
         "postinstall": "nuxt prepare"
     },
     "dependencies": {
