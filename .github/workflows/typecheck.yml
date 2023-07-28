@@ -1,4 +1,4 @@
-name: build
+name: typecheck
 on: [push]
 jobs:
     build:
@@ -11,4 +11,4 @@ jobs:
                   cache: 'npm'
                   cache-dependency-path: 'package-lock.json'
             - run: npm ci
-            - run: npm run build
+            - run: npm run typecheck
