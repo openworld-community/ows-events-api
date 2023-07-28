@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ROUTE } from '@/types/router';
-3;
+4
 </script>
 <template>
     <div
