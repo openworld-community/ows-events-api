@@ -8,4 +8,6 @@ jobs:
             - uses: actions/setup-node@v3
               with:
                   node-version: '>=16.10.0'
+                  cache: ''
+                  cache-dependency-path: ''
             - run: npm ci
