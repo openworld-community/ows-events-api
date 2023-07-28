@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ROUTE } from '@/types/router';
-// sdd
+// sd
 </script>
 <template>
     <div
