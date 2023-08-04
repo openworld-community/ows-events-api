@@ -20,7 +20,8 @@ async function populate() {
             { value: { priority: 0, fn: populateTags }, name: 'Tags' },
             { value: { priority: 1, fn: populateEvents }, name: 'Events' }
         ],
-        message: `Which tables would you like to populate with data? Existing data in selected tables will be purged`
+        message:
+            'Which tables would you like to populate with data? Existing data in selected tables will be purged'
     });
 
     const answer = await confirm({
