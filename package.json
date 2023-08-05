@@ -2,6 +2,7 @@
     "name": "ows-events-api",
     "private": true,
     "type": "module",
+    "packageManager": "npm@9.8.1",
     "scripts": {
         "dev": "nuxt dev",
         "build": "nuxt build",
