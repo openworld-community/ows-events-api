@@ -1,0 +1,58 @@
+<template>
+    <svg
+        width="36"
+        height="36"
+        viewBox="0 0 36 36"
+        fill="white"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <g filter="url(#filter0_d_22_190)">
+            <path
+                d="M29.9527 4.68813L5.28899 14.2207C3.62456 14.826 3.62456 15.8851 4.98636 16.1878L11.1901 18.1548L13.6111 25.4177C13.9137 26.1743 13.7624 26.4769 14.519 26.4769C15.1242 26.4769 15.4268 26.1743 15.7294 25.8717C15.8808 25.7204 17.2426 24.3586 18.7557 22.8455L25.1107 27.5361C26.3212 28.1413 27.0778 27.8387 27.3804 26.4769L31.6171 6.65517C32.071 4.99075 31.0119 4.08289 29.9527 4.68813ZM26.7751 9.22746L14.9729 19.9705L14.519 24.9638L12.098 17.7009L26.0186 8.92484C26.6238 8.47091 27.2291 8.77353 26.7751 9.22746Z"
+            />
+        </g>
+        <defs>
+            <filter
+                id="filter0_d_22_190"
+                x="-2"
+                y="0.5"
+                width="40"
+                height="40"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+            >
+                <feFlood
+                    flood-opacity="0"
+                    result="BackgroundImageFix"
+                />
+                <feColorMatrix
+                    in="SourceAlpha"
+                    type="matrix"
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                    result="hardAlpha"
+                />
+                <feOffset dy="4" />
+                <feGaussianBlur stdDeviation="2" />
+                <feComposite
+                    in2="hardAlpha"
+                    operator="out"
+                />
+                <feColorMatrix
+                    type="matrix"
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+                />
+                <feBlend
+                    mode="normal"
+                    in2="BackgroundImageFix"
+                    result="effect1_dropShadow_22_190"
+                />
+                <feBlend
+                    mode="normal"
+                    in="SourceGraphic"
+                    in2="effect1_dropShadow_22_190"
+                    result="shape"
+                />
+            </filter>
+        </defs>
+    </svg>
+</template>

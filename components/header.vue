@@ -1,95 +1,83 @@
-<script setup lang="ts">
-const isClosed = ref(true);
-onMounted(() => {
-    window.addEventListener('scroll', () => {
-        isClosed.value = window.scrollY > 0;
-    });
-});
-</script>
-
 <template>
-    <header :class="{ 'header-open': !isClosed, 'header-closed': isClosed }">
-        <NuxtLink to="/">
-            <img
-                src=""
-                alt="logo"
-            />
-        </NuxtLink>
+    <header
+        class="header bg-accent-navy-dark sm:px-6 sm:py-6 md:px-8 md:py-6 lg:px-10 lg:py-8 xl:px-16 xl:py-10"
+        :class="{ 'header-open': !isClosed, 'header-closed': isClosed }"
+    >
+        <div class="relative flex items-center">
+            <NuxtLink
+                to="/"
+                class="logo absolute flex w-full justify-center"
+            >
+                <Logo />
+            </NuxtLink>
+            <HeaderSignIn />
+        </div>
 
-        <div class="nav-link">Пункт меню</div>
-        /
-        <div class="nav-link">Пункт меню</div>
-        /
-        <div class="nav-link">Пункт меню</div>
-        /
-        <div class="nav-link">Пункт меню</div>
-
-        <NuxtLink
-            class=""
-            to="/profile"
-        >
-            Войти
-        </NuxtLink>
-        /
-        <NuxtLink
-            to="/login"
-            class="login-button"
-        >
-            LOGIN
-        </NuxtLink>
+        <Navbar class="nav" />
     </header>
 </template>
 
+<script setup lang="ts">
+const isClosed = ref(true);
+const scrollHandler = () => {
+    isClosed.value = window.scrollY > 0;
+};
+
+onMounted(() => {
+    window.addEventListener('scroll', scrollHandler);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', scrollHandler);
+});
+</script>
+
 <style scoped>
-header {
-    transition: height 0.3s ease;
-    height: 165px;
-    background-color: #374259;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
+.header {
+    transition: all 0.3s ease;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
     z-index: 9999;
 }
 
-.header-closed {
-    height: 115px;
+.header-closed .logo {
+    bottom: -65px;
+    left: 0;
+    width: 87px;
+    transition: all 0.3s ease;
+}
+.header-closed .nav {
+    justify-content: flex-start;
+    padding-left: 120px;
+}
+.header-closed .nav .link::before {
+    content: none;
+}
+.header-closed .nav .link {
+    padding-left: 0;
+}
+.header-closed .header-btn {
+    bottom: -64px;
+    right: 0;
+    position: absolute;
+    transition: all 0.3s ease;
 }
 
-header h1 {
-    color: #ffffff;
-    font-size: 24px;
-    margin: 0;
+.btn-login {
+    position: relative;
 }
-
-header .nav-link {
-    color: #ffffff;
-    font-size: 24px;
-    margin: 0;
+.btn-login::after {
+    content: none;
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(90deg, #5c9ad2 0%, #48c78e 100%);
 }
-header .login-button {
-    border-radius: 24px;
-    background: var(--gradient-primary-vertical, linear-gradient(180deg, #48c78e 0%, #21a86b 100%));
-
-    /* airbnb-box-shadow */
-    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.08);
-    display: flex;
-    height: 44px;
-    padding: 12px 24px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-header .login-button:hover {
-    border-radius: 24px;
-    background: var(--primary-green, #48c78e);
-
-    /* airbnb-box-shadow */
-    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.08);
+.btn-login:hover::after {
+    content: '';
 }
 </style>
