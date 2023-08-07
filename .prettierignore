@@ -22,4 +22,5 @@ logs
 .env.*
 !.env.example
 
-server/database/temp.db
+package-lock.json
+server/database/migrations/*
