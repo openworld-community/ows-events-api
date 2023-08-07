@@ -1,13 +1,7 @@
 <template>
-    <div class="text-base  text-input-text flex justify-end w-3/12">
-        @ Afisha Peredelano 
-    </div>
+    <div class="flex w-3/12 justify-end text-base text-input-text">@ Afisha Peredelano</div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-</script>
-
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

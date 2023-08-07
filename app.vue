@@ -12,7 +12,7 @@ useHead({
 <template>
     <div class="w-full bg-accent-navy-dark">
         <Header />
-        <div class="xl:px-16  sm:px-6 md:px-8 lg:px-10">
+        <div class="sm:px-6 md:px-8 lg:px-10 xl:px-16">
             <NuxtPage />
         </div>
         <Footer />

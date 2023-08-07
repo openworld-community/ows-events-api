@@ -8,7 +8,7 @@
                 class="mb-4"
             >
                 <NuxtLink
-                    class="footer-link text-base text-white  relative"
+                    class="footer-link relative text-base text-white"
                     :to="link.route"
                 >
                     {{ link.title }}
@@ -32,16 +32,16 @@ defineProps({
 </script>
 
 <style scoped>
-.footer-link::after{
+.footer-link::after {
     content: none;
     width: 100%;
     height: 4px;
     position: absolute;
     bottom: -2px;
     left: 0;
-    background: linear-gradient(90deg, #5C9AD2 0%, #48C78E 100%);
+    background: linear-gradient(90deg, #5c9ad2 0%, #48c78e 100%);
 }
-.footer-link:hover::after{
+.footer-link:hover::after {
     content: '';
 }
 </style>

@@ -8,7 +8,7 @@
                 class="mb-4"
             >
                 <NuxtLink
-                    class="footer-link text-base text-white relative "
+                    class="footer-link relative text-base text-white"
                     :to="link.route"
                 >
                     {{ link.title }}
