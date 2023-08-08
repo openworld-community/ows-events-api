@@ -6,8 +6,8 @@ export default defineNuxtConfig({
         plugins: {
             'tailwindcss/nesting': {},
             tailwindcss: {},
-            autoprefixer: {}
-        }
+            autoprefixer: {},
+        },
     },
-    devtools: { enabled: false }
+    devtools: { enabled: false },
 });

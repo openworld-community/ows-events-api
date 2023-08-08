@@ -14,13 +14,13 @@ export const event = sqliteTable('event', {
     address: text('address'),
     price: text('price'),
     image: text('image'),
-    url: text('url')
+    url: text('url'),
 });
 export type EventModel = InferModel<typeof event>;
 export type InsertEventModel = InferModel<typeof event, 'insert'>;
 
 export const tag = sqliteTable('tag', {
-    name: text('name').primaryKey()
+    name: text('name').primaryKey(),
 });
 export type TagModel = InferModel<typeof tag>;
 export type InsertTagModel = InferModel<typeof tag, 'insert'>;
@@ -33,7 +33,7 @@ export const eventsToTags = sqliteTable(
             .references(() => event.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
         tag: text('tag')
             .notNull()
-            .references(() => tag.name, { onDelete: 'cascade', onUpdate: 'restrict' })
+            .references(() => tag.name, { onDelete: 'cascade', onUpdate: 'restrict' }),
     },
     (table) => {
         return { pk: primaryKey(table.event, table.tag) };
