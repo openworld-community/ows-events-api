@@ -4,9 +4,9 @@ useHead({
         {
             rel: 'stylesheet',
             href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap',
-            fetchpriority: 'high'
-        }
-    ]
+            fetchpriority: 'high',
+        },
+    ],
 });
 </script>
 <template>

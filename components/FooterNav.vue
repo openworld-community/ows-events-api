@@ -15,42 +15,42 @@
 const projectLinks = [
     {
         route: '/',
-        title: 'О проекте'
+        title: 'О проекте',
     },
     {
         route: '/',
-        title: 'Поддержка'
-    },
-
-    {
-        route: '/',
-        title: 'Afisha'
+        title: 'Поддержка',
     },
 
     {
         route: '/',
-        title: 'Пункт меню'
-    }
+        title: 'Afisha',
+    },
+
+    {
+        route: '/',
+        title: 'Пункт меню',
+    },
 ];
 const footerLinks = [
     {
         route: '/',
-        title: 'Пункт меню'
+        title: 'Пункт меню',
     },
     {
         route: '/',
-        title: 'Пункт меню'
-    },
-
-    {
-        route: '/',
-        title: 'Пункт меню'
+        title: 'Пункт меню',
     },
 
     {
         route: '/',
-        title: 'Пункт меню'
-    }
+        title: 'Пункт меню',
+    },
+
+    {
+        route: '/',
+        title: 'Пункт меню',
+    },
 ];
 </script>
 

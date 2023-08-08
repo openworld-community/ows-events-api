@@ -17,7 +17,7 @@ const links = [
     { title: 'Пункт меню', route: '/' },
     { title: 'Пункт меню', route: '/' },
     { title: 'Пункт меню', route: '/' },
-    { title: 'Пункт меню', route: '/' }
+    { title: 'Пункт меню', route: '/' },
 ];
 </script>
 

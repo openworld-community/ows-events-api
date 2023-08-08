@@ -22,12 +22,12 @@
 defineProps({
     title: {
         type: String,
-        default: ''
+        default: '',
     },
     projectLinks: {
         type: Array,
-        default: () => []
-    }
+        default: () => [],
+    },
 });
 </script>
 
