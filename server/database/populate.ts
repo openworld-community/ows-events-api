@@ -7,7 +7,7 @@ import {
     type InsertTagModel,
     type InsertEventModel,
     type InsertEventsToTagsModel,
-    eventsToTags
+    eventsToTags,
 } from './schema';
 import { faker } from '@faker-js/faker';
 import { nanoid } from 'nanoid';
@@ -18,14 +18,14 @@ async function populate() {
     const tables = await checkbox({
         choices: [
             { value: { priority: 0, fn: populateTags }, name: 'Tags' },
-            { value: { priority: 1, fn: populateEvents }, name: 'Events' }
+            { value: { priority: 1, fn: populateEvents }, name: 'Events' },
         ],
         message:
-            'Which tables would you like to populate with data? Existing data in selected tables will be purged'
+            'Which tables would you like to populate with data? Existing data in selected tables will be purged',
     });
 
     const answer = await confirm({
-        message: 'This action is gonna purge all data from selected tables. Continue?'
+        message: 'This action is gonna purge all data from selected tables. Continue?',
     });
     if (!answer) return;
 
@@ -62,7 +62,7 @@ function populateEvents() {
                 ? faker.finance.amount({ symbol: faker.finance.currency().symbol })
                 : faker.finance.transactionType()
         ),
-        url: maybeUndefined(faker.internet.url)
+        url: maybeUndefined(faker.internet.url),
     }));
 
     db.insert(event).values(events).all().then(populateEventsToTags);
