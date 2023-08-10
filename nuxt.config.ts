@@ -7,9 +7,9 @@ export default defineNuxtConfig({
             'unplugin-icons/nuxt',
             {
                 compiler: 'vue3',
-                autoInstall: true
-            }
-        ]
+                autoInstall: true,
+            },
+        ],
     ],
     css: ['~/assets/base.pcss'],
     postcss: {
