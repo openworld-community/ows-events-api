@@ -4,7 +4,7 @@ const links = [
     { title: 'Пункт меню', route: '/' },
     { title: 'Пункт меню', route: '/' },
     { title: 'Пункт меню', route: '/' },
-    { title: 'Пункт меню', route: '/' }
+    { title: 'Пункт меню', route: '/' },
 ];
 const isClosed = ref(true);
 const scrollHandler = () => {

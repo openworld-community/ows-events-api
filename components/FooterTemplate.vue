@@ -2,63 +2,63 @@
 const linksBottomNav = [
     {
         route: '/',
-        title: 'Политика чего-нибудь'
+        title: 'Политика чего-нибудь',
     },
     {
         route: '/',
-        title: 'Политика чего-нибудь'
+        title: 'Политика чего-нибудь',
     },
     {
         route: '/',
-        title: 'Юридическая информация'
-    }
+        title: 'Юридическая информация',
+    },
 ];
 const projectLinks = [
     {
         route: '/',
-        title: 'О проекте'
+        title: 'О проекте',
     },
     {
         route: '/',
-        title: 'Поддержка'
-    },
-
-    {
-        route: '/',
-        title: 'Afisha'
+        title: 'Поддержка',
     },
 
     {
         route: '/',
-        title: 'Пункт меню'
-    }
+        title: 'Afisha',
+    },
+
+    {
+        route: '/',
+        title: 'Пункт меню',
+    },
 ];
 const footerLinks = [
     {
         route: '/',
-        title: 'Пункт меню'
+        title: 'Пункт меню',
     },
     {
         route: '/',
-        title: 'Пункт меню'
-    },
-
-    {
-        route: '/',
-        title: 'Пункт меню'
+        title: 'Пункт меню',
     },
 
     {
         route: '/',
-        title: 'Пункт меню'
-    }
+        title: 'Пункт меню',
+    },
+
+    {
+        route: '/',
+        title: 'Пункт меню',
+    },
 ];
 const socialIcons = [
     { url: '/', icoName: 'instagram-icon' },
     { url: '/', icoName: 'twitter-icon' },
     { url: '/', icoName: 'telegram-icon' },
     { url: '/', icoName: 'linkedin-icon' },
-    { url: '/', icoName: 'github-icon' }
+    { url: '/', icoName: 'github-icon' },
 ];
 </script>
 
