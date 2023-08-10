@@ -30,6 +30,21 @@ npm run build
 npm run preview
 ```
 
+### Database
+
+We use libSQL(SQLite fork) which makes it really easy to deploy a local database for testing purposes.
+
+Zero configuration required except for the commands below.
+
+```bash
+# Sync database with defined schema
+npm run db-migrate
+# Fill in database with data
+npm run db-populate
+# Starts a studio - an interface for interacting with your database
+npm run db-studio
+```
+
 ## Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
