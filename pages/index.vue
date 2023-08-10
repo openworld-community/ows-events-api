@@ -1,10 +1,20 @@
 <script setup lang="ts">
 import { ROUTE } from '@/types/router';
+
+const { $trpc } = useNuxtApp();
+
+const { data: events } = $trpc.event.findMany.useQuery();
 </script>
 <template>
     <div
         class="flex min-h-screen flex-col items-center justify-center bg-accent-navy-dark text-center text-2xl"
     >
+        <div
+            v-for="event in events"
+            :key="event.id"
+        >
+            {{ event.title }}
+        </div>
         <h1 class="mb-2 text-3xl font-extrabold">HOMEPAGE</h1>
         <nav>
             <ol>
