@@ -13,24 +13,10 @@ module.exports = {
     ],
     theme: {
         extend: {
-            fontFamily: {
-                'sans': ['Inter', ...defaultTheme.fontFamily.sans],
-            },
-        },
-        colors: {
-            text: {
-                main: '#4E4E4E',
-                secondary: '#ACACAC'
-            },
-            input: {
-                field: '#DBDBDB',
-                text: '#C3C3C3'
-            },
-            accent: {
-                green: {
-                    main: '#48C78E',
-                    dark: '#21A86B',
-                    light: '#B6E9D2'
+            colors: {
+                text: {
+                    main: '#4E4E4E',
+                    secondary: '#ACACAC',
                 },
                 input: {
                     field: '#DBDBDB',
