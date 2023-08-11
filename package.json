@@ -12,8 +12,8 @@
         "check-format": "prettier . -c",
         "format": "npm run check-format -- -w",
         "postinstall": "nuxt prepare",
-        "db-migrate": "drizzle-kit generate:sqlite && tsx ./server/database/migration.ts",
-        "db-populate": "tsx ./server/database/populate.ts",
+        "db-migrate": "drizzle-kit generate:sqlite && tsx ./scripts/database/migration.ts",
+        "db-populate": "tsx ./scripts/database/populate.ts",
         "db-studio": "drizzle-kit studio"
     },
     "dependencies": {

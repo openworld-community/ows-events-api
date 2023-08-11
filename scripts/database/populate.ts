@@ -1,6 +1,6 @@
 import checkbox from '@inquirer/checkbox';
 import confirm from '@inquirer/confirm';
-import { db } from './client';
+import { db } from '../../server/database/client';
 import {
     event,
     tag,
@@ -8,7 +8,7 @@ import {
     type InsertEventModel,
     type InsertEventsToTagsModel,
     eventsToTags
-} from './schema';
+} from '../../server/database/schema';
 import { faker } from '@faker-js/faker';
 import { nanoid } from 'nanoid';
 
