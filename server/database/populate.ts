@@ -48,14 +48,14 @@ function populateEvents() {
     const events: InsertEventModel[] = faker.helpers.uniqueArray(nanoid, 300).map((id) => ({
         id,
         country: faker.location.country(),
-        date: faker.date.anytime(),
+        date: faker.date.anytime().getTime(),
         timezoneName: faker.location.timeZone(),
         timezoneOffset: faker.number.int({ min: -72, max: 72 }) * 10,
         title: faker.company.name(),
         address: maybeUndefined(faker.location.streetAddress),
         city: maybeUndefined(faker.location.city),
         description: maybeUndefined(faker.commerce.productDescription),
-        durationInSeconds: maybeUndefined(faker.number.int),
+        durationInSeconds: maybeUndefined(() => faker.number.int({ max: 2592000 /** 1 month */ })),
         image: maybeUndefined(faker.image.url),
         price: maybeUndefined(() =>
             Math.random() > 0.5

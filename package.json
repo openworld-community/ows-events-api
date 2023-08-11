@@ -22,7 +22,7 @@
         "@trpc/client": "^10.37.1",
         "@trpc/server": "^10.37.1",
         "autoprefixer": "^10.4.14",
-        "drizzle-orm": "^0.27.2",
+        "drizzle-orm": "^0.28.2",
         "nanoid": "^4.0.2",
         "nuxt": "^3.6.1",
         "postcss": "^8.4.25",
