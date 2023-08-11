@@ -12,6 +12,12 @@ export const eventsRouter = router({
                         .object({
                             /** Filter if title contains specified string */
                             title: z.string().optional(),
+                            /** Filter if description contains specified string */
+                            description: z.string().optional(),
+                            /** Filter by country */
+                            country: z.string().optional(),
+                            /** Filter by city */
+                            city: z.string().optional(),
                             /** Filter if event will be active after specified date(timestamp in ms) */
                             after: z.number().int().min(0).optional(),
                             /** Filter if event was active before specified date(timestamp in ms) */
@@ -26,11 +32,18 @@ export const eventsRouter = router({
         .query(({ input }) => {
             return db.query.event.findMany({
                 with: { tags: { columns: { tag: true } } },
-                where: (event, { and }) =>
+                where: (event, { and, eq }) =>
                     and(
                         input.filters.title
                             ? like(event.title, `%${input.filters.title}%`)
                             : undefined,
+                        input.filters.description
+                            ? like(event.description, `%${input.filters.description}%`)
+                            : undefined,
+                        input.filters.country
+                            ? eq(event.country, input.filters.country)
+                            : undefined,
+                        input.filters.city ? eq(event.city, input.filters.city) : undefined,
                         input.filters.after
                             ? sql`${event.date} + COALESCE(${event.durationInSeconds},0) * 1000 >= ${input.filters.after}`
                             : undefined,
