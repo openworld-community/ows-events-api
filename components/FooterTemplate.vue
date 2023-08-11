@@ -63,9 +63,9 @@ const socialIcons = [
 </script>
 
 <template>
-    <footer class="lg:pt-16 xl:pt-20">
-        <div class="grid grid-cols-4 items-center justify-between">
-            <Logo class="w-[150px]" />
+    <footer>
+        <div class="grid grid-cols-4 items-center">
+            <Logo class="w-36" />
             <div class="flex gap-6">
                 <NuxtLink
                     v-for="item in socialIcons"
@@ -81,48 +81,46 @@ const socialIcons = [
             </div>
             <div class="flex flex-col items-end text-right">
                 <h3 class="mb-8 font-bold text-input-text">Проект</h3>
-                <ul class="flex flex-col">
+                <ul class="flex flex-col gap-4">
                     <li
                         v-for="link in projectLinks"
                         :key="link.title"
-                        class="mb-4"
                     >
                         <AppLink
                             :title="link.title"
-                            :route="link.route"
+                            :to="link.route"
                         />
                     </li>
                 </ul>
             </div>
             <div class="flex flex-col items-end">
                 <h3 class="mb-8 font-bold text-input-text">Сообщество</h3>
-                <ul class="flex flex-col">
+                <ul class="flex flex-col gap-4">
                     <li
                         v-for="link in footerLinks"
                         :key="link.title"
-                        class="mb-4"
                     >
                         <AppLink
                             :title="link.title"
-                            :route="link.route"
+                            :to="link.route"
                         />
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="flex items-center justify-between pt-8">
-            <ul class="flex w-9/12 items-center justify-end gap-10">
+        <div class="grid grid-cols-[3fr,1fr] items-center pt-8">
+            <ul class="flex items-center justify-end gap-14">
                 <li
                     v-for="link in linksBottomNav"
                     :key="link.title"
                 >
                     <AppLink
                         :title="link.title"
-                        :route="link.route"
+                        :to="link.route"
                     />
                 </li>
             </ul>
-            <div class="text-input-text">@ Afisha Peredelano</div>
+            <div class="flex justify-end text-input-text">@ Afisha Peredelano</div>
         </div>
     </footer>
 </template>

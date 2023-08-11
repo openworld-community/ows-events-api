@@ -6,7 +6,7 @@ const links = [
     { title: 'Пункт меню', route: '/' },
     { title: 'Пункт меню', route: '/' },
 ];
-const isClosed = ref(true);
+const isClosed = ref(false);
 const scrollHandler = () => {
     isClosed.value = window.scrollY > 0;
 };
@@ -43,7 +43,7 @@ onUnmounted(() => {
             >
                 <AppLink
                     :title="link.title"
-                    :route="link.route"
+                    :to="link.route"
                 />
             </li>
         </ul>
