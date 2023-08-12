@@ -7,9 +7,9 @@ export default defineNuxtConfig({
             'unplugin-icons/nuxt',
             {
                 compiler: 'vue3',
-                autoInstall: true
-            }
-        ]
+                autoInstall: true,
+            },
+        ],
     ],
     build: { transpile: ['trpc-nuxt'] },
     css: ['~/assets/base.pcss'],
@@ -17,8 +17,8 @@ export default defineNuxtConfig({
         plugins: {
             'tailwindcss/nesting': {},
             tailwindcss: {},
-            autoprefixer: {}
-        }
+            autoprefixer: {},
+        },
     },
-    devtools: { enabled: false }
+    devtools: { enabled: false },
 });
