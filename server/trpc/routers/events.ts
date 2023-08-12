@@ -21,10 +21,10 @@ export const eventsRouter = router({
                             /** Filter if event will be active after specified date(timestamp in ms) */
                             after: z.number().int().min(0).optional(),
                             /** Filter if event was active before specified date(timestamp in ms) */
-                            before: z.number().int().min(0).optional()
+                            before: z.number().int().min(0).optional(),
                         })
                         .optional()
-                        .default({})
+                        .default({}),
                 })
                 .optional()
                 .default({})
@@ -48,7 +48,7 @@ export const eventsRouter = router({
                             ? sql`${event.date} + COALESCE(${event.durationInSeconds},0) * 1000 >= ${input.filters.after}`
                             : undefined,
                         input.filters.before ? lte(event.date, input.filters.before) : undefined
-                    )
+                    ),
             });
-        })
+        }),
 });

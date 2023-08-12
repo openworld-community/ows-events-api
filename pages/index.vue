@@ -7,8 +7,8 @@ const { data: events } = await $trpc.event.findMany.useQuery({
     filters: {
         after: new Date('08.01.2023').getTime(),
         before: new Date('08.30.2023').getTime(),
-        title: 'a'
-    }
+        title: 'a',
+    },
 });
 </script>
 <template>

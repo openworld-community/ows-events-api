@@ -44,7 +44,7 @@ export const eventsToTags = sqliteTable(
 );
 export const eventsToTagsRelations = relations(eventsToTags, ({ one }) => ({
     event: one(event, { fields: [eventsToTags.event], references: [event.id] }),
-    tag: one(tag, { fields: [eventsToTags.tag], references: [tag.name] })
+    tag: one(tag, { fields: [eventsToTags.tag], references: [tag.name] }),
 }));
 export type EventsToTagsModel = InferModel<typeof eventsToTags>;
 export type InsertEventsToTagsModel = InferModel<typeof eventsToTags, 'insert'>;
