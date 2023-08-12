@@ -23,5 +23,6 @@ module.exports = {
         'vue/singleline-html-element-content-newline': 'off',
         'vue/multi-word-component-names': 'off',
         'vue/html-self-closing': ['warn', { html: { void: 'always' } }],
+        'vue/component-tags-order': ['error', { order: ['script', 'template', 'style'] }],
     },
 };

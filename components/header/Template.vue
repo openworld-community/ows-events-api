@@ -61,11 +61,3 @@ onUnmounted(() => {
     grid-template-columns: auto repeat(4, 1fr);
 }
 </style>
-
-<!-- 
-    <AppLink
-                    :to="link.route"
-                >
-                    {{ link.title }}
-                </AppLink>
- -->

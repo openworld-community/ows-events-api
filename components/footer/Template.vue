@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import InstagramLogo from '~icons/icon-park-solid/instagram';
+import TelegramLogo from '~icons/basil/telegram-solid';
+import TwitterLogo from '~icons/mdi/twitter';
+import LinkedInLogo from '~icons/bx/bxl-linkedin';
+import GithubLogo from '~icons/codicon/github-inverted';
 const linksBottomNav = [
     {
         route: '/',
@@ -54,11 +59,11 @@ const footerLinks = [
     },
 ];
 const socialIcons = [
-    { url: '/', icoName: 'instagram-icon' },
-    { url: '/', icoName: 'twitter-icon' },
-    { url: '/', icoName: 'telegram-icon' },
-    { url: '/', icoName: 'linkedin-icon' },
-    { url: '/', icoName: 'github-icon' },
+    { url: '/', icon: InstagramLogo },
+    { url: '/', icon: TelegramLogo },
+    { url: '/', icon: TwitterLogo },
+    { url: '/', icon: LinkedInLogo },
+    { url: '/', icon: GithubLogo },
 ];
 </script>
 
@@ -67,17 +72,13 @@ const socialIcons = [
         <div class="grid grid-cols-2">
             <div class="grid grid-cols-2 items-center">
                 <Logo class="w-36" />
-                <div class="flex gap-6">
+                <div class="flex gap-6 text-3xl">
                     <NuxtLink
                         v-for="item in socialIcons"
                         :key="item.url"
                         :to="item.url"
                     >
-                        <img
-                            class="w-8"
-                            :src="`/icons/${item.icoName}.svg`"
-                            alt=""
-                        />
+                        <component :is="item.icon" />
                     </NuxtLink>
                 </div>
             </div>

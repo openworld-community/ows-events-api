@@ -1,3 +1,10 @@
+<script setup lang="ts">
+defineProps<{
+    title: string;
+    linkList: { title: string; route: string }[];
+}>();
+</script>
+
 <template>
     <div class="text-end">
         <h3 class="mb-8 text-base font-bold text-input-text">{{ title }}</h3>
@@ -13,12 +20,5 @@
         </ul>
     </div>
 </template>
-
-<script setup lang="ts">
-defineProps<{
-    title: string;
-    linkList: { title: string; route: string }[];
-}>();
-</script>
 
 <style scoped></style>
