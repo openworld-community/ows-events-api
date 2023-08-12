@@ -1,18 +1,10 @@
-<script setup lang="ts">
-defineProps<{
-    title: string;
-    to: string;
-}>();
-</script>
+<script setup lang="ts"></script>
 
 <template>
     <NuxtLink
-        class="link relative block after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:rounded-full after:bg-gradient-to-r after:from-accent-green-main after:to-accent-blue-main after:content-none hover:after:content-['']"
-        :to="to"
+        class="relative after:absolute after:bottom-[-4px] after:left-0 after:h-1 after:w-full after:rounded-full after:bg-gradient-to-r after:from-accent-green-main after:to-accent-blue-main after:content-none hover:after:content-['']"
     >
-        <slot>
-            {{ title }}
-        </slot>
+        <slot> Пункт меню </slot>
     </NuxtLink>
 </template>
 

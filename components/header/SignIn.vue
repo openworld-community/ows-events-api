@@ -1,24 +1,22 @@
 <script setup lang="ts"></script>
 
 <template>
-    <div class="flex items-center gap-4">
+    <div class="flex flex-nowrap items-center gap-4">
         <AppLink
             title="Войти"
             to="/profile"
-        />
+        >
+            Войти
+        </AppLink>
 
         <span class="text-input-field">/</span>
         <NuxtLink
             to="/login"
-            class="btn-login rounded-full bg-gradient-to-l from-accent-green-dark to-accent-green-main px-6 py-3 shadow-md"
+            class="rounded-full bg-gradient-to-b from-accent-green-main to-accent-green-dark px-6 py-3 shadow-md hover:to-accent-green-main"
         >
             Регистрация
         </NuxtLink>
     </div>
 </template>
 
-<style scoped>
-.btn-login:hover {
-    background: #48c78e;
-}
-</style>
+<style scoped></style>

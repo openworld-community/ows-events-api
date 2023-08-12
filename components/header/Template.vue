@@ -1,4 +1,8 @@
 <script setup lang="ts">
+const isClosed = ref(false);
+const scrollHandler = () => {
+    isClosed.value = window.scrollY > 0;
+};
 const links = [
     { title: 'Пункт меню', route: '/' },
     { title: 'Пункт меню', route: '/' },
@@ -6,23 +10,17 @@ const links = [
     { title: 'Пункт меню', route: '/' },
     { title: 'Пункт меню', route: '/' },
 ];
-const isClosed = ref(false);
-const scrollHandler = () => {
-    isClosed.value = window.scrollY > 0;
-};
 
 onMounted(() => {
     window.addEventListener('scroll', scrollHandler);
 });
-
 onUnmounted(() => {
     window.removeEventListener('scroll', scrollHandler);
 });
 </script>
-
 <template>
     <header
-        class="sticky top-0 grid items-center gap-8"
+        class="sticky top-0 grid items-center gap-6 bg-accent-navy-dark after:absolute after:bottom-0 after:h-0.5 after:w-full after:bg-gradient-to-r after:from-accent-green-main after:to-accent-blue-main"
         :class="[isClosed ? 'header-closed' : 'grid-flow-dense grid-cols-4']"
     >
         <NuxtLink
@@ -39,12 +37,11 @@ onUnmounted(() => {
             <li
                 v-for="link in links"
                 :key="link.title"
-                class="navlink after:text-input-field"
+                class="navlink"
             >
-                <AppLink
-                    :title="link.title"
-                    :to="link.route"
-                />
+                <AppLink :to="link.route">
+                    {{ link.title }}
+                </AppLink>
             </li>
         </ul>
         <HeaderSignIn
@@ -64,3 +61,11 @@ onUnmounted(() => {
     grid-template-columns: auto repeat(4, 1fr);
 }
 </style>
+
+<!-- 
+    <AppLink
+                    :to="link.route"
+                >
+                    {{ link.title }}
+                </AppLink>
+ -->
