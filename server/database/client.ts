@@ -4,7 +4,7 @@ import config from '@/config';
 
 const client = createClient({
     url: config.databaseURL,
-    authToken: config.databaseAuthToken
+    authToken: config.databaseAuthToken,
 });
 
 export const db = drizzle(client);
