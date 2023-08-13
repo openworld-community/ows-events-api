@@ -54,7 +54,13 @@ function populateEvents() {
         title: faker.company.name(),
         address: maybeUndefined(faker.location.streetAddress),
         city: maybeUndefined(faker.location.city),
-        description: maybeUndefined(faker.commerce.productDescription),
+        description: maybeUndefined(
+            () =>
+                `${faker.commerce.productDescription()}\n${faker.lorem.paragraph({
+                    min: 0,
+                    max: 15,
+                })}`
+        ),
         durationInSeconds: maybeUndefined(() => faker.number.int({ max: 2592000 /** 1 month */ })),
         image: maybeUndefined(faker.image.url),
         price: maybeUndefined(() =>
@@ -74,7 +80,7 @@ async function populateEventsToTags() {
 
     const events = await db.select().from(event).all();
     for (const event of events) {
-        if (Math.random() > 0.3) continue;
+        if (Math.random() < 0.3) continue;
         const eventTags = faker.helpers
             .arrayElements(tags, { min: 1, max: tags.length })
             .map<InsertEventsToTagsModel>((tag) => ({ tag: tag.name, event: event.id }));
@@ -83,5 +89,5 @@ async function populateEventsToTags() {
 }
 
 function maybeUndefined<T>(fn: () => T) {
-    return Math.random() > 0.5 ? undefined : fn();
+    return Math.random() < 0.3 ? undefined : fn();
 }
