@@ -3,13 +3,13 @@ import { ROUTE } from '@/types/router';
 
 const { $trpc } = useNuxtApp();
 
-const { data: events } = await $trpc.event.findMany.useQuery({
-    filters: {
-        after: new Date('08.01.2023').getTime(),
-        before: new Date('08.30.2023').getTime(),
-        title: 'a',
-    },
-});
+const filters = {
+    after: new Date('08.01.2023').getTime(),
+    before: new Date('08.30.2023').getTime(),
+    title: 'a',
+};
+
+const { data: events } = await $trpc.event.findMany.useQuery({ filters });
 </script>
 <template>
     <div
@@ -30,7 +30,7 @@ const { data: events } = await $trpc.event.findMany.useQuery({
                 <div>{{ ((event.durationInSeconds ?? 0) / (60 * 60 * 24)).toFixed(0) }} days</div>
                 <div class="flex justify-center p-2">
                     <div
-                        v-for="{ tag } in event.tags"
+                        v-for="tag in event.tags"
                         :key="tag"
                         class="bg-accent-navy-dark after:bg-gradient-to-r after:from-accent-green-main after:to-accent-blue-main after:bg-clip-text after:font-extrabold after:text-[transparent] after:content-['~'] last:after:content-none"
                     >

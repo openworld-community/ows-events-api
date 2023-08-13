@@ -1,6 +1,8 @@
 import { db } from '@/server/database/client';
-import { like, lte, sql } from 'drizzle-orm';
+import { destr } from 'destr';
+import { and, eq, like, lte, sql } from 'drizzle-orm';
 import { z } from 'zod';
+import { event, eventColumns, eventsToTags } from '../../database/schema';
 import { publicProcedure, router } from '../trpc';
 
 export const eventsRouter = router({
@@ -29,10 +31,23 @@ export const eventsRouter = router({
                 .optional()
                 .default({})
         )
-        .query(({ input }) => {
-            return db.query.event.findMany({
-                with: { tags: { columns: { tag: true } } },
-                where: (event, { and, eq }) =>
+        .query(({ input }) =>
+            db
+                .select({
+                    ...eventColumns,
+                    tags: sql<string>`JSON_GROUP_ARRAY(${eventsToTags.tag}) FILTER (WHERE ${eventsToTags.tag} IS NOT NULL)`.mapWith(
+                        (x) => {
+                            try {
+                                return destr<string[]>(x, { strict: true });
+                            } catch (e) {
+                                console.error(e);
+                                return [];
+                            }
+                        }
+                    ),
+                })
+                .from(event)
+                .where(
                     and(
                         input.filters.title
                             ? like(event.title, `%${input.filters.title}%`)
@@ -48,7 +63,10 @@ export const eventsRouter = router({
                             ? sql`${event.date} + COALESCE(${event.durationInSeconds},0) * 1000 >= ${input.filters.after}`
                             : undefined,
                         input.filters.before ? lte(event.date, input.filters.before) : undefined
-                    ),
-            });
-        }),
+                    )
+                )
+                .leftJoin(eventsToTags, eq(eventsToTags.event, event.id))
+                .groupBy(event.id)
+                .all()
+        ),
 });

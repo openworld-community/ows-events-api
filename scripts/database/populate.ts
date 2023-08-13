@@ -12,6 +12,8 @@ import {
 import { faker } from '@faker-js/faker';
 import { nanoid } from 'nanoid';
 
+const TAG_COUNT = 30;
+const EVENT_COUNT = 1000;
 populate();
 
 async function populate() {
@@ -36,7 +38,10 @@ function populateTags() {
     db.delete(tag).all();
 
     const tags: InsertTagModel[] = faker.helpers
-        .uniqueArray(() => (Math.random() > 0.5 ? faker.word.noun() : faker.word.adjective()), 20)
+        .uniqueArray(
+            () => (Math.random() > 0.5 ? faker.word.noun() : faker.word.adjective()),
+            TAG_COUNT
+        )
         .map((name) => ({ name }));
 
     db.insert(tag).values(tags).all();
@@ -45,7 +50,7 @@ function populateTags() {
 function populateEvents() {
     db.delete(event).all();
 
-    const events: InsertEventModel[] = faker.helpers.uniqueArray(nanoid, 300).map((id) => ({
+    const events: InsertEventModel[] = faker.helpers.uniqueArray(nanoid, EVENT_COUNT).map((id) => ({
         id,
         country: faker.location.country(),
         date: faker.date.anytime().getTime(),
@@ -71,10 +76,14 @@ function populateEvents() {
         url: maybeUndefined(faker.internet.url),
     }));
 
-    db.insert(event).values(events).all().then(populateEventsToTags);
+    Promise.allSettled(
+        chunk(events, 500).map((chunk) => db.insert(event).values(chunk).all())
+    ).then(populateEventsToTags);
 }
 
 async function populateEventsToTags() {
+    await db.delete(eventsToTags).all();
+
     const tags = await db.select().from(tag).all();
     if (!tags.length) return console.warn('There are no tags in the database to insert');
 
@@ -82,7 +91,7 @@ async function populateEventsToTags() {
     for (const event of events) {
         if (Math.random() < 0.3) continue;
         const eventTags = faker.helpers
-            .arrayElements(tags, { min: 1, max: tags.length })
+            .arrayElements(tags, { min: 1, max: tags.length >> 1 })
             .map<InsertEventsToTagsModel>((tag) => ({ tag: tag.name, event: event.id }));
         db.insert(eventsToTags).values(eventTags).all();
     }
@@ -90,4 +99,12 @@ async function populateEventsToTags() {
 
 function maybeUndefined<T>(fn: () => T) {
     return Math.random() < 0.3 ? undefined : fn();
+}
+
+function chunk<T>(arr: T[], size: number) {
+    const newArr = [];
+    for (let i = 0; i < arr.length; i += size) {
+        newArr.push(arr.slice(i, i + size));
+    }
+    return newArr;
 }

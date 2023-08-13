@@ -1,5 +1,5 @@
-import { integer, sqliteTable, text, primaryKey } from 'drizzle-orm/sqlite-core';
-import { relations, type InferModel } from 'drizzle-orm';
+import { getTableColumns, type InferModel } from 'drizzle-orm';
+import { integer, primaryKey, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const event = sqliteTable('event', {
     id: text('id').primaryKey(),
@@ -17,14 +17,13 @@ export const event = sqliteTable('event', {
     image: text('image'),
     url: text('url'),
 });
-export const eventRelations = relations(event, ({ many }) => ({ tags: many(eventsToTags) }));
+export const eventColumns = getTableColumns(event);
 export type EventModel = InferModel<typeof event>;
 export type InsertEventModel = InferModel<typeof event, 'insert'>;
 
 export const tag = sqliteTable('tag', {
     name: text('name').primaryKey(),
 });
-export const tagRelations = relations(tag, ({ many }) => ({ events: many(eventsToTags) }));
 export type TagModel = InferModel<typeof tag>;
 export type InsertTagModel = InferModel<typeof tag, 'insert'>;
 
@@ -42,9 +41,5 @@ export const eventsToTags = sqliteTable(
         return { pk: primaryKey(table.event, table.tag) };
     }
 );
-export const eventsToTagsRelations = relations(eventsToTags, ({ one }) => ({
-    event: one(event, { fields: [eventsToTags.event], references: [event.id] }),
-    tag: one(tag, { fields: [eventsToTags.tag], references: [tag.name] }),
-}));
 export type EventsToTagsModel = InferModel<typeof eventsToTags>;
 export type InsertEventsToTagsModel = InferModel<typeof eventsToTags, 'insert'>;
