@@ -1,4 +1,4 @@
-# Afisha Peredelano Events Parsing Frontend
+# Afisha Peredelano Events API
 
 ## NPM scripts
 
