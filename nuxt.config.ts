@@ -11,6 +11,7 @@ export default defineNuxtConfig({
             },
         ],
     ],
+    build: { transpile: ['trpc-nuxt'] },
     css: ['~/assets/base.pcss'],
     postcss: {
         plugins: {

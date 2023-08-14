@@ -15,11 +15,11 @@ CREATE TABLE `event` (
 );
 --> statement-breakpoint
 CREATE TABLE `events-to-tags` (
-	`event` text NOT NULL,
-	`tag` text NOT NULL,
-	PRIMARY KEY(`event`, `tag`),
-	FOREIGN KEY (`event`) REFERENCES `event`(`id`) ON UPDATE cascade ON DELETE cascade,
-	FOREIGN KEY (`tag`) REFERENCES `tag`(`name`) ON UPDATE restrict ON DELETE cascade
+	`event-id` text NOT NULL,
+	`tag-name` text NOT NULL,
+	PRIMARY KEY(`event-id`, `tag-name`),
+	FOREIGN KEY (`event-id`) REFERENCES `event`(`id`) ON UPDATE cascade ON DELETE cascade,
+	FOREIGN KEY (`tag-name`) REFERENCES `tag`(`name`) ON UPDATE restrict ON DELETE cascade
 );
 --> statement-breakpoint
 CREATE TABLE `tag` (

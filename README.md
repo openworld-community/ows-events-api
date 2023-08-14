@@ -1,4 +1,4 @@
-# Afisha Peredelano Events Parsing Frontend
+# Afisha Peredelano Events API
 
 ## NPM scripts
 
@@ -15,10 +15,12 @@ npm run dev
 ```bash
 # Log type errors to console
 npm run typecheck
-# Log ESLint errors and warning to console
+# Log ESLint errors and warnings to console
 npm run lint
 # Run prettier formatting on the whole app. Logs files which were formatted
 npm run format
+# Run prettier to log files with incorrect formatting
+npm run check-format
 ```
 
 ### Build
@@ -37,9 +39,9 @@ We use libSQL(SQLite fork) which makes it really easy to deploy a local database
 Zero configuration required except for the commands below.
 
 ```bash
-# Sync database with defined schema
+# Sync database with the defined schema
 npm run db-migrate
-# Fill in database with data
+# Fill database with data
 npm run db-populate
 # Starts a studio - an interface for interacting with your database
 npm run db-studio

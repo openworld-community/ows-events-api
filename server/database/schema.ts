@@ -1,11 +1,12 @@
-import { integer, sqliteTable, text, primaryKey } from 'drizzle-orm/sqlite-core';
-import { type InferModel } from 'drizzle-orm';
+import { getTableColumns, type InferModel } from 'drizzle-orm';
+import { integer, primaryKey, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const event = sqliteTable('event', {
     id: text('id').primaryKey(),
     title: text('title').notNull(),
     description: text('description'),
-    date: integer('date', { mode: 'timestamp_ms' }).notNull(),
+    /** Timestamp in ms */
+    date: integer('date').notNull(),
     durationInSeconds: integer('duration'),
     timezoneName: text('timezone-name').notNull(),
     timezoneOffset: integer('timezone-offset').notNull(),
@@ -16,6 +17,7 @@ export const event = sqliteTable('event', {
     image: text('image'),
     url: text('url'),
 });
+export const eventColumns = getTableColumns(event);
 export type EventModel = InferModel<typeof event>;
 export type InsertEventModel = InferModel<typeof event, 'insert'>;
 
@@ -28,15 +30,15 @@ export type InsertTagModel = InferModel<typeof tag, 'insert'>;
 export const eventsToTags = sqliteTable(
     'events-to-tags',
     {
-        event: text('event')
+        eventId: text('event-id')
             .notNull()
             .references(() => event.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
-        tag: text('tag')
+        tagName: text('tag-name')
             .notNull()
             .references(() => tag.name, { onDelete: 'cascade', onUpdate: 'restrict' }),
     },
     (table) => {
-        return { pk: primaryKey(table.event, table.tag) };
+        return { pk: primaryKey(table.eventId, table.tagName) };
     }
 );
 export type EventsToTagsModel = InferModel<typeof eventsToTags>;

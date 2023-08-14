@@ -20,7 +20,7 @@ onUnmounted(() => {
 </script>
 <template>
     <header
-        class="sticky top-0 grid items-center gap-6 bg-accent-navy-dark after:absolute after:bottom-0 after:h-0.5 after:w-full after:bg-gradient-to-r after:from-accent-green-main after:to-accent-blue-main"
+        class="sticky top-0 z-50 grid items-center gap-6 bg-accent-navy-dark after:absolute after:bottom-0 after:h-0.5 after:w-full after:bg-gradient-to-r after:from-accent-green-main after:to-accent-blue-main"
         :class="[isClosed ? 'header-closed' : 'grid-flow-dense grid-cols-4']"
     >
         <NuxtLink

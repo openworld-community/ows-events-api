@@ -11,22 +11,27 @@
         "lint": "eslint . --max-warnings=0",
         "check-format": "prettier . -c",
         "format": "npm run check-format -- -w",
-        "postinstall": "nuxt prepare",
-        "db-migrate": "drizzle-kit generate:sqlite && tsx ./server/database/migration.ts",
-        "db-populate": "tsx ./server/database/populate.ts",
-        "db-studio": "drizzle-kit studio"
+        "db-migrate": "drizzle-kit generate:sqlite && tsx ./scripts/database/migration.ts",
+        "db-populate": "tsx ./scripts/database/populate.ts",
+        "db-studio": "drizzle-kit studio",
+        "postinstall": "nuxt prepare"
     },
     "dependencies": {
         "@libsql/client": "^0.3.1",
         "@quasar/extras": "^1.16.5",
+        "@trpc/client": "^10.37.1",
+        "@trpc/server": "^10.37.1",
         "autoprefixer": "^10.4.14",
-        "drizzle-orm": "^0.27.2",
+        "destr": "^2.0.1",
+        "drizzle-orm": "^0.28.2",
         "nanoid": "^4.0.2",
         "nuxt": "^3.6.1",
         "postcss": "^8.4.25",
         "quasar": "^2.12.3",
         "tailwindcss": "^3.3.2",
-        "unplugin-icons": "^0.16.5"
+        "trpc-nuxt": "^0.10.6",
+        "unplugin-icons": "^0.16.5",
+        "zod": "^3.21.4"
     },
     "devDependencies": {
         "@faker-js/faker": "^8.0.2",

@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "20441c51-d79b-4a48-a86c-123ec1850785",
+  "id": "102b3da7-d707-4a4d-ab61-c28f904c85b2",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "event": {
@@ -107,15 +107,15 @@
     "events-to-tags": {
       "name": "events-to-tags",
       "columns": {
-        "event": {
-          "name": "event",
+        "event-id": {
+          "name": "event-id",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
-        "tag": {
-          "name": "tag",
+        "tag-name": {
+          "name": "tag-name",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
@@ -124,12 +124,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "events-to-tags_event_event_id_fk": {
-          "name": "events-to-tags_event_event_id_fk",
+        "events-to-tags_event-id_event_id_fk": {
+          "name": "events-to-tags_event-id_event_id_fk",
           "tableFrom": "events-to-tags",
           "tableTo": "event",
           "columnsFrom": [
-            "event"
+            "event-id"
           ],
           "columnsTo": [
             "id"
@@ -137,12 +137,12 @@
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
-        "events-to-tags_tag_tag_name_fk": {
-          "name": "events-to-tags_tag_tag_name_fk",
+        "events-to-tags_tag-name_tag_name_fk": {
+          "name": "events-to-tags_tag-name_tag_name_fk",
           "tableFrom": "events-to-tags",
           "tableTo": "tag",
           "columnsFrom": [
-            "tag"
+            "tag-name"
           ],
           "columnsTo": [
             "name"
@@ -152,10 +152,10 @@
         }
       },
       "compositePrimaryKeys": {
-        "events-to-tags_event_tag_pk": {
+        "events-to-tags_event-id_tag-name_pk": {
           "columns": [
-            "event",
-            "tag"
+            "event-id",
+            "tag-name"
           ]
         }
       },

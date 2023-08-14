@@ -1,6 +1,6 @@
 import checkbox from '@inquirer/checkbox';
 import confirm from '@inquirer/confirm';
-import { db } from './client';
+import { db } from '../../server/database/client';
 import {
     event,
     tag,
@@ -8,10 +8,12 @@ import {
     type InsertEventModel,
     type InsertEventsToTagsModel,
     eventsToTags,
-} from './schema';
+} from '../../server/database/schema';
 import { faker } from '@faker-js/faker';
 import { nanoid } from 'nanoid';
 
+const TAG_COUNT = 30;
+const EVENT_COUNT = 1000;
 populate();
 
 async function populate() {
@@ -36,7 +38,10 @@ function populateTags() {
     db.delete(tag).all();
 
     const tags: InsertTagModel[] = faker.helpers
-        .uniqueArray(() => (Math.random() > 0.5 ? faker.word.noun() : faker.word.adjective()), 20)
+        .uniqueArray(
+            () => (Math.random() > 0.5 ? faker.word.noun() : faker.word.adjective()),
+            TAG_COUNT
+        )
         .map((name) => ({ name }));
 
     db.insert(tag).values(tags).all();
@@ -45,17 +50,23 @@ function populateTags() {
 function populateEvents() {
     db.delete(event).all();
 
-    const events: InsertEventModel[] = faker.helpers.uniqueArray(nanoid, 300).map((id) => ({
+    const events: InsertEventModel[] = faker.helpers.uniqueArray(nanoid, EVENT_COUNT).map((id) => ({
         id,
         country: faker.location.country(),
-        date: faker.date.anytime(),
+        date: faker.date.anytime().getTime(),
         timezoneName: faker.location.timeZone(),
         timezoneOffset: faker.number.int({ min: -72, max: 72 }) * 10,
         title: faker.company.name(),
         address: maybeUndefined(faker.location.streetAddress),
         city: maybeUndefined(faker.location.city),
-        description: maybeUndefined(faker.commerce.productDescription),
-        durationInSeconds: maybeUndefined(faker.number.int),
+        description: maybeUndefined(
+            () =>
+                `${faker.commerce.productDescription()}\n${faker.lorem.paragraph({
+                    min: 0,
+                    max: 15,
+                })}`
+        ),
+        durationInSeconds: maybeUndefined(() => faker.number.int({ max: 2592000 /** 1 month */ })),
         image: maybeUndefined(faker.image.url),
         price: maybeUndefined(() =>
             Math.random() > 0.5
@@ -65,23 +76,35 @@ function populateEvents() {
         url: maybeUndefined(faker.internet.url),
     }));
 
-    db.insert(event).values(events).all().then(populateEventsToTags);
+    Promise.allSettled(
+        chunk(events, 500).map((chunk) => db.insert(event).values(chunk).all())
+    ).then(populateEventsToTags);
 }
 
 async function populateEventsToTags() {
+    await db.delete(eventsToTags).all();
+
     const tags = await db.select().from(tag).all();
     if (!tags.length) return console.warn('There are no tags in the database to insert');
 
     const events = await db.select().from(event).all();
     for (const event of events) {
-        if (Math.random() > 0.3) continue;
+        if (Math.random() < 0.3) continue;
         const eventTags = faker.helpers
-            .arrayElements(tags, { min: 1, max: tags.length })
-            .map<InsertEventsToTagsModel>((tag) => ({ tag: tag.name, event: event.id }));
+            .arrayElements(tags, { min: 1, max: tags.length >> 1 })
+            .map<InsertEventsToTagsModel>((tag) => ({ tagName: tag.name, eventId: event.id }));
         db.insert(eventsToTags).values(eventTags).all();
     }
 }
 
 function maybeUndefined<T>(fn: () => T) {
-    return Math.random() > 0.5 ? undefined : fn();
+    return Math.random() < 0.3 ? undefined : fn();
+}
+
+function chunk<T>(arr: T[], size: number) {
+    const newArr = [];
+    for (let i = 0; i < arr.length; i += size) {
+        newArr.push(arr.slice(i, i + size));
+    }
+    return newArr;
 }
