@@ -11,10 +11,10 @@
         "lint": "eslint . --max-warnings=0",
         "check-format": "prettier . -c",
         "format": "npm run check-format -- -w",
-        "postinstall": "nuxt prepare",
         "db-migrate": "drizzle-kit generate:sqlite && tsx ./scripts/database/migration.ts",
         "db-populate": "tsx ./scripts/database/populate.ts",
-        "db-studio": "drizzle-kit studio"
+        "db-studio": "drizzle-kit studio",
+        "postinstall": "nuxt prepare"
     },
     "dependencies": {
         "@libsql/client": "^0.3.1",
