@@ -30,15 +30,15 @@ export type InsertTagModel = InferModel<typeof tag, 'insert'>;
 export const eventsToTags = sqliteTable(
     'events-to-tags',
     {
-        event: text('event')
+        eventId: text('event-id')
             .notNull()
             .references(() => event.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
-        tag: text('tag')
+        tagName: text('tag-name')
             .notNull()
             .references(() => tag.name, { onDelete: 'cascade', onUpdate: 'restrict' }),
     },
     (table) => {
-        return { pk: primaryKey(table.event, table.tag) };
+        return { pk: primaryKey(table.eventId, table.tagName) };
     }
 );
 export type EventsToTagsModel = InferModel<typeof eventsToTags>;

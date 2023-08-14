@@ -31,42 +31,41 @@ export const eventsRouter = router({
                 .optional()
                 .default({})
         )
-        .query(({ input }) =>
-            db
-                .select({
-                    ...eventColumns,
-                    tags: sql<string>`JSON_GROUP_ARRAY(${eventsToTags.tag}) FILTER (WHERE ${eventsToTags.tag} IS NOT NULL)`.mapWith(
-                        (x) => {
-                            try {
-                                return destr<string[]>(x, { strict: true });
-                            } catch (e) {
-                                console.error(e);
-                                return [];
+        .query(
+            ({
+                input: {
+                    filters: { after, before, city, country, description, title },
+                },
+            }) =>
+                db
+                    .select({
+                        ...eventColumns,
+                        tags: sql<string>`JSON_GROUP_ARRAY(${eventsToTags.tagName}) FILTER (WHERE ${eventsToTags.tagName} IS NOT NULL)`.mapWith(
+                            (x) => {
+                                try {
+                                    return destr<string[]>(x, { strict: true });
+                                } catch (e) {
+                                    console.error(e);
+                                    return [];
+                                }
                             }
-                        }
-                    ),
-                })
-                .from(event)
-                .where(
-                    and(
-                        input.filters.title
-                            ? like(event.title, `%${input.filters.title}%`)
-                            : undefined,
-                        input.filters.description
-                            ? like(event.description, `%${input.filters.description}%`)
-                            : undefined,
-                        input.filters.country
-                            ? eq(event.country, input.filters.country)
-                            : undefined,
-                        input.filters.city ? eq(event.city, input.filters.city) : undefined,
-                        input.filters.after
-                            ? sql`${event.date} + COALESCE(${event.durationInSeconds},0) * 1000 >= ${input.filters.after}`
-                            : undefined,
-                        input.filters.before ? lte(event.date, input.filters.before) : undefined
+                        ),
+                    })
+                    .from(event)
+                    .where(
+                        and(
+                            title ? like(event.title, `%${title}%`) : undefined,
+                            description ? like(event.description, `%${description}%`) : undefined,
+                            country ? eq(event.country, country) : undefined,
+                            city ? eq(event.city, city) : undefined,
+                            after
+                                ? sql`${event.date} + COALESCE(${event.durationInSeconds},0) * 1000 >= ${after}`
+                                : undefined,
+                            before ? lte(event.date, before) : undefined
+                        )
                     )
-                )
-                .leftJoin(eventsToTags, eq(eventsToTags.event, event.id))
-                .groupBy(event.id)
-                .all()
+                    .leftJoin(eventsToTags, eq(eventsToTags.eventId, event.id))
+                    .groupBy(event.id)
+                    .all()
         ),
 });

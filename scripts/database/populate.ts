@@ -92,7 +92,7 @@ async function populateEventsToTags() {
         if (Math.random() < 0.3) continue;
         const eventTags = faker.helpers
             .arrayElements(tags, { min: 1, max: tags.length >> 1 })
-            .map<InsertEventsToTagsModel>((tag) => ({ tag: tag.name, event: event.id }));
+            .map<InsertEventsToTagsModel>((tag) => ({ tagName: tag.name, eventId: event.id }));
         db.insert(eventsToTags).values(eventTags).all();
     }
 }
