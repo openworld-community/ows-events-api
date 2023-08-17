@@ -6,6 +6,7 @@ useHead({
             href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap',
             fetchpriority: 'high',
         },
+        { rel: 'icon', href: 'favicon.ico' },
     ],
 });
 </script>
