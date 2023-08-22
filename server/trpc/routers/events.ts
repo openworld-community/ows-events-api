@@ -1,6 +1,6 @@
 import { db } from '@/server/database/client';
 import { destr } from 'destr';
-import { and, eq, like, lte, sql } from 'drizzle-orm';
+import { and, eq, isNotNull, like, lte, sql } from 'drizzle-orm';
 import { z } from 'zod';
 import { event, eventsToTags } from '../../database/schema';
 import { publicProcedure, router } from '../trpc';
@@ -38,16 +38,15 @@ export const eventsRouter = router({
             db
                 .select({
                     event,
-                    tags: sql<string>`JSON_GROUP_ARRAY(${eventsToTags.tagName}) FILTER (WHERE ${eventsToTags.tagName} IS NOT NULL)`.mapWith(
-                        (x) => {
-                            try {
-                                return destr<string[]>(x, { strict: true });
-                            } catch (e) {
-                                console.error(e);
-                                return [];
-                            }
+                    tags: sql<string>`JSON_GROUP_ARRAY(${eventsToTags.tagName}) 
+                    FILTER (WHERE ${isNotNull(eventsToTags.tagName)})`.mapWith((x) => {
+                        try {
+                            return destr<string[]>(x, { strict: true });
+                        } catch (e) {
+                            console.error(e);
+                            return [];
                         }
-                    ),
+                    }),
                 })
                 .from(event)
                 .where(
