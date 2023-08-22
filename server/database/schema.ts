@@ -1,4 +1,4 @@
-import { getTableColumns, type InferModel } from 'drizzle-orm';
+import { type InferModel } from 'drizzle-orm';
 import { integer, primaryKey, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const event = sqliteTable('event', {
@@ -17,7 +17,6 @@ export const event = sqliteTable('event', {
     image: text('image'),
     url: text('url'),
 });
-export const eventColumns = getTableColumns(event);
 export type EventModel = InferModel<typeof event>;
 export type InsertEventModel = InferModel<typeof event, 'insert'>;
 

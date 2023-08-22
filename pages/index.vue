@@ -17,7 +17,7 @@ const { data: events } = await $trpc.event.findMany.useQuery({ filters });
     >
         <div class="flex flex-col gap-6 text-white">
             <div
-                v-for="event in events"
+                v-for="{ event, tags } in events"
                 :key="event.id"
                 class="relative text-3xl after:absolute after:-bottom-3 after:left-0 after:h-2 after:w-full after:bg-gradient-to-r after:from-accent-green-main after:to-accent-blue-main"
             >
@@ -30,14 +30,14 @@ const { data: events } = await $trpc.event.findMany.useQuery({ filters });
                 <div>{{ ((event.durationInSeconds ?? 0) / (60 * 60 * 24)).toFixed(0) }} days</div>
                 <div class="flex justify-center p-2">
                     <div
-                        v-for="tag in event.tags"
+                        v-for="tag in tags"
                         :key="tag"
                         class="bg-accent-navy-dark after:bg-gradient-to-r after:from-accent-green-main after:to-accent-blue-main after:bg-clip-text after:font-extrabold after:text-[transparent] after:content-['~'] last:after:content-none"
                     >
                         {{ tag }}
                     </div>
                     <div
-                        v-if="!event.tags.length"
+                        v-if="!tags.length"
                         class="text-accent-red-main"
                     >
                         no tags
