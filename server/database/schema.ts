@@ -1,4 +1,4 @@
-import { type InferModel } from 'drizzle-orm';
+import { type InferInsertModel, type InferSelectModel } from 'drizzle-orm';
 import { integer, primaryKey, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const event = sqliteTable('event', {
@@ -17,14 +17,14 @@ export const event = sqliteTable('event', {
     image: text('image'),
     url: text('url'),
 });
-export type EventModel = InferModel<typeof event>;
-export type InsertEventModel = InferModel<typeof event, 'insert'>;
+export type EventModel = InferSelectModel<typeof event>;
+export type InsertEventModel = InferInsertModel<typeof event>;
 
 export const tag = sqliteTable('tag', {
     name: text('name').primaryKey(),
 });
-export type TagModel = InferModel<typeof tag>;
-export type InsertTagModel = InferModel<typeof tag, 'insert'>;
+export type TagModel = InferSelectModel<typeof tag>;
+export type InsertTagModel = InferInsertModel<typeof tag>;
 
 export const eventsToTags = sqliteTable(
     'events-to-tags',
@@ -40,5 +40,5 @@ export const eventsToTags = sqliteTable(
         return { pk: primaryKey(table.eventId, table.tagName) };
     }
 );
-export type EventsToTagsModel = InferModel<typeof eventsToTags>;
-export type InsertEventsToTagsModel = InferModel<typeof eventsToTags, 'insert'>;
+export type EventsToTagsModel = InferSelectModel<typeof eventsToTags>;
+export type InsertEventsToTagsModel = InferInsertModel<typeof eventsToTags>;
