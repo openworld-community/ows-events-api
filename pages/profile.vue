@@ -1,164 +1,62 @@
 <script setup lang="ts">
 import { ROUTE } from '@/types/router';
+import LocationIcon from '~icons/fluent/location-28-filled'
+
+
+
+const events = [
+    { id: 2, location: 'Serbia, Novi Sad', title: 'Фестиваль', searchParams: '“Цветы”, “Танцы”', date: 20230824 },
+    { id: 3, location: 'Serbia, Novi Sad', title: 'Фестиваль', searchParams: '“Цветы”, “Танцы”', date: 20230824 },
+    { id: 1, location: 'Serbia, Novi Sad', title: 'Фестиваль', searchParams: '“Цветы”, “Танцы”', date: 20230824 },
+    { id: 4, location: 'Serbia, Novi Sad', title: 'Фестиваль', searchParams: '“Цветы”, “Танцы”', date: 20230824 }
+];
+
+const counter = 100
+
 definePageMeta({ name: ROUTE.PROFILE });
 </script>
 <template>
-    <section class="user-profile">
-        <div class="profile-top">
-            <h1 class="header-title">Limitation</h1>
-            <div class="header-right">
-                <a
-                    class="username"
-                    href="#"
-                >
-                    Username
-                </a>
-                <a
-                    class="logout-btn"
-                    href="#"
-                >
-                    <svg
-                        class="logout-icon"
-                        viewBox="0 0 32 32"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <title />
-                        <g id="logout">
-                            <line
-                                class="cls-1"
-                                x1="15.92"
-                                x2="28.92"
-                                y1="16"
-                                y2="16"
-                            />
-                            <path
-                                d="M23.93,25v3h-16V4h16V7h2V3a1,1,0,0,0-1-1h-18a1,1,0,0,0-1,1V29a1,1,0,0,0,1,1h18a1,1,0,0,0,1-1V25Z"
-                            />
-                            <line
-                                class="cls-1"
-                                x1="28.92"
-                                x2="24.92"
-                                y1="16"
-                                y2="20"
-                            />
-                            <line
-                                class="cls-1"
-                                x1="28.92"
-                                x2="24.92"
-                                y1="16"
-                                y2="12"
-                            />
-                            <line
-                                class="cls-1"
-                                x1="24.92"
-                                x2="24.92"
-                                y1="8.09"
-                                y2="6.09"
-                            />
-                            <line
-                                class="cls-1"
-                                x1="24.92"
-                                x2="24.92"
-                                y1="26"
-                                y2="24"
-                            />
-                        </g>
-                    </svg>
-                </a>
+    <div class="w-full">
+        <div class=" flex flex-col justify-center items-center">
+            <div class="flex flex-row  space-x-2 mt-12">
+                <div class="bg-white w-1/3 px-4 py-3 rounded-md min-w-max">
+                    <span class="text-black">g9H3mDp7kF2qR5sAg9H3mDp79H3mDp7kF2qR5sAg9H3mDp7kF2qR5sA</span>
+                </div>
+                <Button class="btn rounded-full px-5 py-3" label="Показать токен" />
             </div>
+            <div class="flex flex-col justify-start w-1/3 mt-6 ">
+                <div>Оставшийся лимит: 250</div>
+                <ProgressBar :value="counter" class="rounded-full"></ProgressBar>
+            </div>
+            <div class="w-full">
+                <div class=" grid grid-cols-5 bg-accent-teal-main px-6 py-4 self-stretch">
+                    <span class="flex flex-row">
+                        <LocationIcon class=" w-6 h-6 text-accent-green-light"></LocationIcon>Локация
+                    </span>
+                    <span>Название</span>
+                    <span>Параметры поиска</span>
+                    <span>Дата</span>
+                </div>
+                <EventBlock :events="events"></EventBlock>
+            </div>
+
         </div>
-        <ul class="profile-bottom">
-            <li class="token">
-                <span class="name">Token:</span>
-                <span class="value"> x255ndjds931s4 </span>
-            </li>
-            <li class="counter">
-                <span class="name">Limitation:</span>
-                <span class="value"> 100/1000 </span>
-            </li>
-        </ul>
-    </section>
+    </div>
 </template>
-<style scoped lang="postcss">
-.user-profile {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    line-height: 30px;
-    color: #4e4e4e;
-}
+<style lang="postcss">
+.btn {
+    transition: background-position-y 300ms;
+    background: linear-gradient(180deg,
+            theme('colors.accent.green.main'),
+            theme('colors.accent.green.main'),
+            theme('colors.accent.green.main'),
+            theme('colors.accent.green.dark'));
+    background-size: 100% 200%;
+    background-position-y: 100%;
 
-.profile-top {
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
-    border-bottom: 1px solid rgba(60, 60, 60, 0.29);
-}
-
-.header-title {
-    margin-left: 10px;
-    margin-bottom: 5px;
-    font-size: 32px;
-    font-weight: 900;
-    line-height: 40px;
-}
-
-.header-right {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10px;
-}
-
-.username {
-    margin-right: 5px;
-    font-size: 18px;
-    color: #4e4e4e;
-}
-
-.username:hover {
-    color: #777575;
-}
-
-.logout-btn {
-    display: flex;
-    align-items: center;
-}
-
-.cls-1 {
-    fill: none;
-    stroke: #000;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 2px;
-}
-
-.logout-icon:hover .cls-1 {
-    stroke: #777575;
-}
-
-.logout-icon:hover {
-    fill: #777575;
-}
-
-.logout-icon {
-    width: 20px;
-    height: 20px;
-}
-
-.profile-bottom {
-    padding: 10px;
-}
-
-.name {
-    font-weight: 600;
-}
-
-@media screen and (min-width: 700px) {
-    .user-profile {
-        width: 700px;
-        margin: 0 auto;
+    &:hover,
+    &:focus-within {
+        background-position-y: 10%;
     }
 }
 </style>

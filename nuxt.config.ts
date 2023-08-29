@@ -11,7 +11,11 @@ export default defineNuxtConfig({
             },
         ],
     ],
-    css: ['~/assets/base.pcss'],
+    css: ['~/assets/base.pcss',],
+    build: {
+        transpile: ['trpc-nuxt', 'primevue']
+    },
+    // ssr: false,
     postcss: {
         plugins: {
             'tailwindcss/nesting': {},

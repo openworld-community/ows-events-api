@@ -8,7 +8,7 @@ const links = [
     { title: 'Пункт меню', route: '/' },
     { title: 'Пункт меню', route: '/' },
     { title: 'Пункт меню', route: '/' },
-    { title: 'Пункт меню', route: '/' },
+    { title: 'Страница пользователя', route: '/profile' },
 ];
 
 onMounted(() => {
